@@ -5,7 +5,13 @@
             <div class="alert alert-danger">
                 <ul class="list-group">
                     @foreach($errors->all() as $error)
-                        <li class="list-group-item">{{$error}}</li>
+                        <li class="list-group-item">
+                            @if($error == "The name has already been taken.")
+                                ชื่อนี้ถูกนำไปใช้แล้ว
+                            @elseif($error = " ")
+                                กรุณาใส่ชื่อหัวข้อ
+                            @endif
+                        </li>
                     @endforeach
                 </ul>
             </div>

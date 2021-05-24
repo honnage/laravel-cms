@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CreateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -33,15 +34,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        $this->validate($request,[
-            'name' => 'required|unique:categories'
-        ]);
-
         Category::create(['name'=>$request->name]);
         Session()->flash('success','บันทึกข้อมูลเรียบร้อยแล้ว');
-        
+
         // dd($request->all());
         return redirect('/categories');
     }
