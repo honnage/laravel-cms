@@ -40,6 +40,8 @@ class CategoryController extends Controller
         ]);
 
         Category::create(['name'=>$request->name]);
+        Session()->flash('success','บันทึกข้อมูลเรียบร้อยแล้ว');
+        
         // dd($request->all());
         return redirect('/categories');
     }
