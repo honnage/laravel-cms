@@ -19,6 +19,10 @@
                                 @case("The image field is required.")
                                     กรุณาใส่ข้อมูล รูปภาพ 
                                     @break
+                                @case("The title has already been taken.")
+                                    หัวข้อนี้ถูกนำไปใช้แล้ว
+                                    @break
+
                                 @default
                                     {{$error}}
                                     @break

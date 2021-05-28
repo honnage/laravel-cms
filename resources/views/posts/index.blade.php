@@ -8,7 +8,41 @@
             Post
         </div>
         <div class="card-body">
-
+            @if($posts->count()>0)
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+    
+                @foreach($posts as $post)
+                <tbody>
+                <tr>
+                    <td>
+                        <img src="storage/{{$post->image}}" alt="" width="80px" height="80px">
+                    </td>
+                    <td>{{ $post->title }}</td>
+                    <td>
+                        <a class="btn btn-warning" href="posts/edit/{{$post->id}}">Edit</a>
+                    </td>
+                    <td>
+                        <form class="delete_form" action="posts/destroy/{{$post->id}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" class="_method" value="DELETE">
+                            <input type="submit" class="btn btn-danger" name="" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @else
+            <h3 class="text text-center">No Post</h3>
+        @endif
         </div>
     </div>
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
