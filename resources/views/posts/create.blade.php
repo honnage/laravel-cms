@@ -37,7 +37,7 @@
             {{isset($posts)? "Edit Post":"Create Post"}}
         </div>
         <div class="card-body">
-            <form action="{{isset($posts)?"/categories/update/$posts->id":"/posts/store"}}" method="post" enctype="multipart/form-data">
+            <form action="{{isset($posts)?"/posts/update/$posts->id":"/posts/store"}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 @if(@isset($posts))
                     {{-- @method('PUT') --}}
@@ -48,7 +48,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Description</label>
-                    <textarea name="description" value="{{isset($posts)?"$posts->description":''}}" rows="4" cols="4" class="form-control"></textarea>
+                    <textarea name="description" rows="4" cols="4" class="form-control">{{isset($posts)?"$posts->description":''}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="">Content</label>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Image</label>
-                    <input type="file" name="image" value="{{isset($posts)?"$posts->image":''}}" class="form-control">
+                    <input type="file" name="image" value="" class="form-control">
                 </div>
            
                 <div class="form-group">
