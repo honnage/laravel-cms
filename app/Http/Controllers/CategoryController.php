@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -73,9 +74,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+        Category::find($id)->update($request->all());
+        Session()->flash('success','อัพเดทข้อมูลเรียบร้อยแล้ว');
+
+        // dd($request->all());
+        return redirect('/categories');
     }
 
     /**

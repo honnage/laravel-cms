@@ -22,7 +22,7 @@ Route::get('categories', [CategoryController::class, 'index']);
 Route::get('categories/create', [CategoryController::class, 'create']);
 Route::post('categories/store', [CategoryController::class, 'store']);
 Route::get('categories/edit/{id}',[CategoryController::class, 'edit']);
-
+Route::post('categories/update/{id}',[CategoryController::class, 'update']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
