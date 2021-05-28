@@ -18,17 +18,17 @@
         @endif
 
         <div class="card-header">
-            Create Category
+            {{isset($category)? "Edit Category":"Create Category"}}
         </div>
         <div class="card-body">
-            <form action="/categories/store" method="post">
+            <form action="{{isset($category)?"/categories/update":"/categories/store"}}" method="post">
                @csrf
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" name="name" value="" class="form-control">
+                    <input type="text" name="name" value="{{isset($category)?"$category->name":''}}" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="submit" name="" value="Add Category" class="btn btn-success">
+                    <input type="submit" name="" value="{{isset($category)? "Update Category":"Add Category"}}" class="btn btn-success">
                 </div>
             </form>
         </div>

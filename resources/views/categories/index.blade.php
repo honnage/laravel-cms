@@ -12,7 +12,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
-    
+                        <th>Name</th>
                     </tr>
                 </thead>
     
@@ -20,7 +20,9 @@
                 <tbody>
                 <tr>
                     <td>{{ $category->name }}</td>
-
+                    <td>
+                        <a class="btn btn-warning" href="categories/edit/{{$category->id}}">Edit</a>
+                    </td>
                 </tr>
                 @endforeach
                 </tbody>
