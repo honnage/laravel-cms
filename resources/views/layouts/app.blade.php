@@ -85,7 +85,7 @@
                                     <a href="/categories">Category</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="#">Post</a>
+                                    <a href="/posts">Post</a>
                                 </li>
                             </ul>
                         </div>
