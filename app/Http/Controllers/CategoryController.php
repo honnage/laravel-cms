@@ -94,6 +94,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+        Session()->flash('success','ลบข้อมูลเรียบร้อยแล้ว');
+        return redirect('/categories');
     }
 }
