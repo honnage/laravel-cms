@@ -36,7 +36,18 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        $image = $request->image->store('posts');
+        // dd($image);
+        Post::create([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'content'=>$request->content,
+            'image'=>$image
+        ]);
+        Session()->flash('success','บันทึกข้อมูลเรียบร้อยแล้ว');
+
         // dd($request->all());
+        return redirect('/posts');
     }
 
     /**
