@@ -52,7 +52,8 @@
                 </div>
                 <div class="form-group">
                     <label for="">Content</label>
-                    <textarea type="text" name="content" value="{{isset($posts)?"$posts->content":''}}" rows="8" cols="8" class="form-control"></textarea>
+                    <input id="x" value="{{isset($posts)?"$posts->content":''}}" type="hidden" name="content">
+                    <trix-editor input="x"></trix-editor>
                 </div>
                 <div class="form-group">
                     <label for="">Image</label>
@@ -65,4 +66,6 @@
             </form>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
 @endsection
