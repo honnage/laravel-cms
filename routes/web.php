@@ -29,6 +29,7 @@ Route::post('categories/destroy/{id}',[CategoryController::class, 'destroy']);
 Route::get('posts', [PostController::class, 'index']);
 Route::get('posts/create', [PostController::class, 'create']);
 Route::post('posts/store', [PostController::class, 'store']);
+Route::post('posts/destroy/{id}',[PostController::class, 'destroy']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
