@@ -14,6 +14,7 @@
                     <tr>
                         <th>Image</th>
                         <th>Title</th>
+                        <th>Category</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -26,6 +27,7 @@
                         <img src="storage/{{$post->image}}" alt="" width="80px" height="80px">
                     </td>
                     <td>{{ $post->title }}</td>
+                    <td>{{ $post->category->name }}</td>
                     <td>
                         <a class="btn btn-warning" href="posts/edit/{{$post->id}}">Edit</a>
                     </td>

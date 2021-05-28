@@ -13,6 +13,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
+                            <th>Post Counts</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -22,6 +23,7 @@
                     <tbody>
                     <tr>
                         <td>{{ $category->name }}</td>
+                        <td>{{ $category->posts->count() }}</td>
                         <td>
                             <a class="btn btn-warning" href="categories/edit/{{$category->id}}">Edit</a>
                         </td>
