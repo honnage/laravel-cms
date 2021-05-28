@@ -6,11 +6,23 @@
                 <ul class="list-group">
                     @foreach($errors->all() as $error)
                         <li class="list-group-item">
-                            @if($error == "The name has already been taken.")
-                                ชื่อนี้ถูกนำไปใช้แล้ว
-                            @elseif($error = " ")
-                                กรุณาใส่ชื่อหัวข้อ
-                            @endif
+                            @switch($error)
+                                @case("The title field is required.")
+                                    กรุณาใส่ข้อมูล หัวข้อ
+                                    @break
+                                @case("The description field is required.")
+                                    กรุณาใส่ข้อมูล รายละเอียด 
+                                    @break
+                                @case("The content field is required.")
+                                    กรุณาใส่ข้อมูล เนื้อหา
+                                    @break
+                                @case("The image field is required.")
+                                    กรุณาใส่ข้อมูล รูปภาพ 
+                                    @break
+                                @default
+                                    {{$error}}
+                                    @break
+                            @endswitch                            
                         </li>
                     @endforeach
                 </ul>
