@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;;
@@ -27,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create')->with('categories',Category::all());
     }
 
     /**
@@ -44,7 +45,8 @@ class PostController extends Controller
             'title'=>$request->title,
             'description'=>$request->description,
             'content'=>$request->content,
-            'image'=>$image
+            'image'=>$image,
+            'category_id'=>$request->category
         ]);
         Session()->flash('success','บันทึกข้อมูลเรียบร้อยแล้ว');
 
@@ -72,7 +74,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $posts = Post::find($id);
-        return view('posts.create')->with('posts',$posts);
+        return view('posts.create')->with('posts',$posts)->with('categories',Category::all());;
     }
 
     /**
@@ -85,7 +87,7 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, $id)
     {
         $post = Post::find($id);
-        $data = $request->only(['title','description','content']);
+        $data = $request->only(['title','description','content','category_id']);
         if($request->hasFile('image')){
             $image = $request->image->store('posts');
             Storage::delete($post->image);
