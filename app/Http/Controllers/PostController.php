@@ -87,11 +87,20 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, $id)
     {
         $post = Post::find($id);
-        $data = $request->only(['title','description','content','category_id']);
+        $data = $request->only(['title','description','content']);
+        // $request->validate([
+        //     'name' => 'required'
+        // ]);
+        // Category::find($id)->update($request->all());
+
         if($request->hasFile('image')){
             $image = $request->image->store('posts');
             Storage::delete($post->image);
             $data['image'] = $image;
+        }
+        
+        if($request->category){
+            $data['category_id']=$request->category;
         }
 
         Post::find($id)->update($data);

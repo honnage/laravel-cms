@@ -59,12 +59,20 @@
                     <label for="">Image</label>
                     <input type="file" name="image" value="" class="form-control">
                 </div>
+
                 <div class="form-group">
+                    {{-- {{$posts->category_id}} --}}
                     <label for="">Category</label>
                     <select class="form-control" name="category">
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach()
+                            <option value="{{$category->id}}"
+                                @if(isset($posts))
+                                    @if($category->id == $posts->category_id)
+                                        selected
+                                    @endif
+                                @endif
+                            >{{$category->name}}</option>
+                        @endforeach
                     </select>
                 </div>
 
