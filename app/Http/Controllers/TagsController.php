@@ -94,6 +94,11 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
+        $tag = Tag::find($id);
+        if($tag->posts->count() > 0){
+            Session()->flash('error','ไม่สามารถลบได้เนื่องจากมีชื่อบทความใช้งานอยู่');
+            return redirect()->back();
+        }
         Tag::find($id)->delete();
         Session()->flash('success','ลบข้อมูลเรียบร้อยแล้ว');
         return redirect('/tags');

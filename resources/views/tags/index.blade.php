@@ -13,7 +13,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
-                            <th>Post Counts</th>
+                            <th>Tag Counts</th>
                             <th></th>
                             <th></th>
                         </tr>
