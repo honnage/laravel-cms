@@ -78,20 +78,20 @@
 
                 @if($tags->count()>0)
                 <div class="form-group">
-                    {{-- {{$posts->category_id}} --}}
-                    <label for="">Tag</label>
-                    <select class="form-control" name="tags[]" multiple>
-                        @foreach($tags as $tag)
-                            <option value="{{$tag->id}}"
-                                @if(isset($posts))
-                                    @if($tag->id == $posts->category_id)
-                                        selected
-                                    @endif
-                                @endif
-                            >{{$tag->name}}</option>
-                        @endforeach
+                    <label for="title">Tags</label>
+                    <select class="form-control js-example-basic-multiple" name="tags[]" id="select-tags" multiple="multiple">
+                            @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}"
+                                      @if(isset($posts))
+                                          @if($posts->hasTag($tag->id))
+                                              selected
+                                          @endif
+                                      @endif
+
+                                      >{{$tag->name}}</option>
+                            @endforeach
                     </select>
-                </div>
+              </div>
                 @endif
                 
 
@@ -103,4 +103,14 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#select-tags').select2();
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+
+
 @endsection

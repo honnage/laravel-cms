@@ -29,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories',Category::all())->with('tags',Tag::all());
+        return view('posts.create')
+        ->with('categories',Category::all())
+        ->with('tags',Tag::all());
     }
 
     /**
@@ -79,8 +81,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $posts = Post::find($id);
-        return view('posts.create')->with('posts',$posts)->with('categories',Category::all())->with('tags',Tag::all());
+        $post = Post::find($id);
+        return view('posts.create')
+        ->with('posts',$post)
+        ->with('categories',Category::all())
+        ->with('tags',Tag::all());
     }
 
     /**
