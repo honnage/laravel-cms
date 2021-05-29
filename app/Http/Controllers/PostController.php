@@ -7,15 +7,15 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use Illuminate\Support\Facades\Storage;;
+use Illuminate\Support\Facades\Storage;
+// use App\Http\Middleware\VerifyCategory;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('verifyCategory')->only(['create','store']);
+    }
+
     public function index()
     {
         return view('posts.index')->with('posts',Post::all());

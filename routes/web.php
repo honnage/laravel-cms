@@ -22,7 +22,6 @@ Route::get('/', function () {
 });
 Route::get('showmodel', [ShowModel3DController::class, 'index']);
 
-
 Route::middleware(['auth'])->group(function(){
     Route::get('categories', [CategoryController::class, 'index']);
     Route::get('categories/create', [CategoryController::class, 'create']);

@@ -99,6 +99,11 @@
                                     {{Session()->get('success')}}
                                 </div>
                             @endif
+                            @if(Session()->has('error'))
+                                <div class="alert alert-success">
+                                    {{Session()->get('error')}}
+                                </div>
+                            @endif
                             @yield('content')
                         </div>
                     </div>
