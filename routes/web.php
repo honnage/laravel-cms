@@ -4,7 +4,7 @@ use App\Http\Controllers\ShowModel3DController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +36,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('posts/edit/{id}',[PostController::class, 'edit']);
     Route::post('posts/update/{id}',[PostController::class, 'update']);
     Route::post('posts/destroy/{id}',[PostController::class, 'destroy']);
+
+    Route::get('tags', [TagsController::class, 'index']);
+    Route::get('tags/create', [TagsController::class, 'create']);
+    Route::post('tags/store', [TagsController::class, 'store']);
+    Route::get('tags/edit/{id}',[TagsController::class, 'edit']);
+    Route::post('tags/update/{id}',[TagsController::class, 'update']);
+    Route::post('tags/destroy/{id}',[TagsController::class, 'destroy']);
 });
 
 

@@ -89,6 +89,9 @@
                                     <a href="/posts">Post</a>
                                 </li>
                                 <li class="list-group-item">
+                                    <a href="/tags">Tags</a>
+                                </li>
+                                <li class="list-group-item">
                                     <a href="/showmodel">Show Model</a>
                                 </li>
                             </ul>
