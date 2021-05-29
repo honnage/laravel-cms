@@ -22,19 +22,23 @@ Route::get('/', function () {
 });
 Route::get('showmodel', [ShowModel3DController::class, 'index']);
 
-Route::get('categories', [CategoryController::class, 'index']);
-Route::get('categories/create', [CategoryController::class, 'create']);
-Route::post('categories/store', [CategoryController::class, 'store']);
-Route::get('categories/edit/{id}',[CategoryController::class, 'edit']);
-Route::post('categories/update/{id}',[CategoryController::class, 'update']);
-Route::post('categories/destroy/{id}',[CategoryController::class, 'destroy']);
 
-Route::get('posts', [PostController::class, 'index']);
-Route::get('posts/create', [PostController::class, 'create']);
-Route::post('posts/store', [PostController::class, 'store']);
-Route::get('posts/edit/{id}',[PostController::class, 'edit']);
-Route::post('posts/update/{id}',[PostController::class, 'update']);
-Route::post('posts/destroy/{id}',[PostController::class, 'destroy']);
+Route::middleware(['auth'])->group(function(){
+    Route::get('categories', [CategoryController::class, 'index']);
+    Route::get('categories/create', [CategoryController::class, 'create']);
+    Route::post('categories/store', [CategoryController::class, 'store']);
+    Route::get('categories/edit/{id}',[CategoryController::class, 'edit']);
+    Route::post('categories/update/{id}',[CategoryController::class, 'update']);
+    Route::post('categories/destroy/{id}',[CategoryController::class, 'destroy']);
+
+    Route::get('posts', [PostController::class, 'index']);
+    Route::get('posts/create', [PostController::class, 'create']);
+    Route::post('posts/store', [PostController::class, 'store']);
+    Route::get('posts/edit/{id}',[PostController::class, 'edit']);
+    Route::post('posts/update/{id}',[PostController::class, 'update']);
+    Route::post('posts/destroy/{id}',[PostController::class, 'destroy']);
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
