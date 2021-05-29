@@ -76,6 +76,8 @@
                     </select>
                 </div>
 
+                
+
                 <div class="form-group">
                     <input type="submit" name="" value="{{isset($posts)? "Update Post":"Create Post"}}" class="btn btn-success">
                 </div>

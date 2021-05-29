@@ -1,8 +1,10 @@
 <?php
+use App\Http\Controllers\ShowModel3DController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,7 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('showmodel', [ShowModel3DController::class, 'index']);
 
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('categories/create', [CategoryController::class, 'create']);

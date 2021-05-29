@@ -18,6 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- <!-- Scripts Model 3d -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
+	<!-- <script src="js/three.js"></script> -->
+	<!-- <script src="js/GLTFLoader.js"></script> -->
+	<script src="js/OrbitControls.js"></script>
+	<script src="js/ShowModel.js"></script> --}}
+
 </head>
 <body>
     <div id="app">
@@ -86,6 +95,9 @@
                                 </li>
                                 <li class="list-group-item">
                                     <a href="/posts">Post</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="/showmodel">Show Model</a>
                                 </li>
                             </ul>
                         </div>
