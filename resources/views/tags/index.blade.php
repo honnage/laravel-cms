@@ -14,7 +14,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Post Counts</th>
-                            {{-- <th></th> --}}
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -23,7 +23,7 @@
                     <tbody>
                     <tr>
                         <td>{{ $tag->name }}</td>
-                        {{-- <td>{{ $tag->posts->count() }}</td> --}}
+                        <td>{{ $tag->posts->count() }}</td>
                         <td>
                             <a class="btn btn-warning" href="tags/edit/{{$tag->id}}">Edit</a>
                         </td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories',Category::all());
+        return view('posts.create')->with('categories',Category::all())->with('tags',Tag::all());
     }
 
     /**
@@ -41,13 +42,18 @@ class PostController extends Controller
     {
         $image = $request->image->store('posts');
         // dd($image);
-        Post::create([
+        $post = Post::create([
             'title'=>$request->title,
             'description'=>$request->description,
             'content'=>$request->content,
             'image'=>$image,
             'category_id'=>$request->category
         ]);
+
+        if($request->tags){
+            $post->tags()->attach($request->tags); //เพิ่มข้อมูลไปอีกตารางแบบ array
+        }
+
         Session()->flash('success','บันทึกข้อมูลเรียบร้อยแล้ว');
 
         // dd($request->all());
@@ -74,7 +80,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $posts = Post::find($id);
-        return view('posts.create')->with('posts',$posts)->with('categories',Category::all());;
+        return view('posts.create')->with('posts',$posts)->with('categories',Category::all())->with('tags',Tag::all());
     }
 
     /**
@@ -88,11 +94,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $data = $request->only(['title','description','content']);
-        // $request->validate([
-        //     'name' => 'required'
-        // ]);
-        // Category::find($id)->update($request->all());
-
+      
         if($request->hasFile('image')){
             $image = $request->image->store('posts');
             Storage::delete($post->image);
@@ -101,6 +103,10 @@ class PostController extends Controller
         
         if($request->category){
             $data['category_id']=$request->category;
+        }
+
+        if($request->tags){
+            $post->tags()->sync($request->tags);
         }
 
         Post::find($id)->update($data);

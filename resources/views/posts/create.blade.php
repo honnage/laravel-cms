@@ -76,6 +76,23 @@
                     </select>
                 </div>
 
+                @if($tags->count()>0)
+                <div class="form-group">
+                    {{-- {{$posts->category_id}} --}}
+                    <label for="">Tag</label>
+                    <select class="form-control" name="tags[]" multiple>
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}"
+                                @if(isset($posts))
+                                    @if($tag->id == $posts->category_id)
+                                        selected
+                                    @endif
+                                @endif
+                            >{{$tag->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endif
                 
 
                 <div class="form-group">
