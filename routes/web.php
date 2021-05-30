@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [WelcomeController::class, 'index']);
+
 Route::get('showmodel', [ShowModel3DController::class, 'index']);
 
 Route::middleware(['auth'])->group(function(){

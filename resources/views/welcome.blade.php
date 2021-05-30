@@ -28,7 +28,7 @@
             <img class="logo-light" src="{{asset('img/logo-light.png')}}" alt="logo">
           </a>
         </div>
-        <a class="btn btn-xs btn-round btn-success" href="#">Login</a>
+        <a class="btn btn-xs btn-round btn-success" href="login">Login</a>
       </div>
     </nav><!-- /.navbar -->
 
@@ -55,40 +55,18 @@
 
             <div class="col-md-8 col-xl-9">
               <div class="row gap-y">
-
+                @foreach($posts as $post)
                 <div class="col-md-6">
-                  <div class="card border hover-shadow-6 mb-6 d-block">
-                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/1.jpg" alt="Card image cap"></a>
-                    <div class="p-6 text-center">
-                      <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">News</a></p>
-                      <h5 class="mb-0"><a class="text-dark" href="#">We relocated our office to a new designed garage</a></h5>
+                    <div class="card border hover-shadow-6 mb-6 d-block">
+                      <a href="#"><img class="card-img-top" src="storage/{{$post->image}}" alt="Card image cap" ></a>
+                      <div class="p-6 text-center">
+                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">{{$post->category->name}}</a></p>
+                        <h5 class="mb-0"><a class="text-dark" href="#">{{$post->title}}</a></h5>
+                      </div>
                     </div>
                   </div>
-                </div>
-
-
-                <div class="col-md-6">
-                  <div class="card border hover-shadow-6 mb-6 d-block">
-                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/2.jpg" alt="Card image cap"></a>
-                    <div class="p-6 text-center">
-                      <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Marketing</a></p>
-                      <h5 class="mb-0"><a class="text-dark" href="#">Top 5 brilliant content marketing strategies</a></h5>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-md-6">
-                  <div class="card border hover-shadow-6 mb-6 d-block">
-                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/3.jpg" alt="Card image cap"></a>
-                    <div class="p-6 text-center">
-                      <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Design</a></p>
-                      <h5 class="mb-0"><a class="text-dark" href="#">Best practices for minimalist design with example</a></h5>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
               </div>
-
             </div>
 
 
@@ -108,18 +86,18 @@
 
                 <h6 class="sidebar-title">Categories</h6>
                 <div class="row link-color-default fs-14 lh-24">
-                  <div class="col-6"><a href="#">News</a></div>
-                  <div class="col-6"><a href="#">Updates</a></div>
-                  <div class="col-6"><a href="#">Design</a></div>
+                    @foreach($categories as $category)
+                        <div class="col-6"><a href="#">{{$category->name}}</a></div>
+                    @endforeach
                 </div>
 
                 <hr>
 
                 <h6 class="sidebar-title">Tags</h6>
                 <div class="gap-multiline-items-1">
-                  <a class="badge badge-secondary" href="#">Record</a>
-                  <a class="badge badge-secondary" href="#">Progress</a>
-                  <a class="badge badge-secondary" href="#">Customers</a>
+                    @foreach($tags as $tag)
+                        <a class="badge badge-secondary" href="#">{{$tag->name}}</a>
+                    @endforeach
                 </div>
 
                 <hr>
