@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('tags/edit/{id}',[TagsController::class, 'edit']);
     Route::post('tags/update/{id}',[TagsController::class, 'update']);
     Route::post('tags/destroy/{id}',[TagsController::class, 'destroy']);
+
+    Route::get('users', [UserController::class, 'index']);
 });
 
 

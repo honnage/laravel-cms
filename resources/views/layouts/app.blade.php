@@ -97,6 +97,11 @@
                                 <li class="list-group-item">
                                     <a href="/tags">Tags</a>
                                 </li>
+                                @if(auth()->user()->isAdmin())
+                                    <li class="list-group-item">
+                                        <a href="/users">User</a>
+                                    </li>
+                                @endif
                                 <li class="list-group-item">
                                     <a href="/showmodel">Show Model</a>
                                 </li>
