@@ -9,11 +9,17 @@ use App\Models\Tag;
 
 class WelcomeController extends Controller
 {
-    public function index()
-    {
+    public function index(){
+        $search = request()->query('search');
+        if($search){
+            $posts = Post::where('title','LIKE',"%{$search}%")->paginate(1);
+        }else{
+            $posts = Post::paginate(6);
+        }
+
         return view('welcome')
-        ->with('categories',Category::all())
-        ->with('posts',Post::paginate(6))
-        ->with('tags',Tag::all());
+        ->with('categories', Category::all())
+        ->with('posts', $posts)
+        ->with('tags', Tag::all());
     }
 }
