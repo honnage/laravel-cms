@@ -45,9 +45,11 @@ Route::middleware(['auth'])->group(function(){
     Route::post('tags/update/{id}',[TagsController::class, 'update']);
     Route::post('tags/destroy/{id}',[TagsController::class, 'destroy']);
 
-    Route::get('users', [UserController::class, 'index']);
 });
 
+Route::middleware(['auth','admin'])->group(function(){
+    Route::get('users', [UserController::class, 'index']);
+});  
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();

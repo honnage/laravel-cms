@@ -8,39 +8,37 @@
             User
         </div>
         <div class="card-body">
-            {{-- @if($tags->count()>0) --}}
+            @if($users->count()>0)
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Name</th>
-                            <th>Tag Counts</th>
-                            <th></th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
-{{--         
-                    @foreach($tags as $tag)
+        
+                    @foreach($users as $user)
                     <tbody>
                     <tr>
-                        <td>{{ $tag->name }}</td>
-                        <td>{{ $tag->posts->count() }}</td>
+                        <td>{{ $user->firstname }}</td>
+                        <td>{{ $user->lastname }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        {{-- @if(!$user->isAdmin()) --}}
                         <td>
-                            <a class="btn btn-warning" href="tags/edit/{{$tag->id}}">Edit</a>
+                            <button type="button" class="btn btn-primary" >Make Admin</a>
                         </td>
-                        <td>
-                            <form class="delete_form" action="tags/destroy/{{$tag->id}}" method="post">
-                                {{csrf_field()}}
-                                <input type="hidden" class="_method" value="DELETE">
-                                <input type="submit" class="btn btn-danger" name="" value="Delete">
-                            </form>
-                        </td>
+                        {{-- @endif --}}
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                     </tbody>
                 </table>
-            {{-- @else
-                <h3 class="text text-center">No Category</h3>
-            @endif --}}
+            @else
+                <h3 class="text text-center">No User</h3>
+            @endif
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
