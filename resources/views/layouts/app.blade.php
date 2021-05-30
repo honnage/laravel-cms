@@ -96,7 +96,7 @@
                                 <li class="list-group-item">
                                     <a href="/tags">Tags</a>
                                 </li>
-                                @if(auth()->user()->isAdmin())
+                                @if(auth()->user()->AdminID() || auth()->user()->isAdmin())
                                     <li class="list-group-item">
                                         <a href="/users">User</a>
                                     </li>

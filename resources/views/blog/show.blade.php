@@ -9,7 +9,7 @@
 
    
     @section('title')
-      <title>{{$post->title}} </title>
+    <title>{{$post->title}}</title>
     @endsection
 
   </head>
@@ -48,7 +48,7 @@
             {!!$post->content!!}
             <div class="gap-xy-2 mt-6">
                 @foreach($post->tags as $tag)
-                    <a class="badge badge-pill badge-secondary" href="#">{{$tag->name}}</a>
+                    <a class="badge badge-pill badge-secondary" href="/blog/show/{{$post->id}}">{{$tag->name}}</a>
                 @endforeach
             </div>
             

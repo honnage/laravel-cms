@@ -26,6 +26,8 @@ use App\Http\Controllers\WelcomeController;
 // });
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('blog/posts/{post}', [App\Http\Controllers\Blog\PostController::class, 'show']);
+Route::get('blog/category/{category}', [App\Http\Controllers\Blog\PostController::class, 'category']);
+Route::get('blog/tag/{tag}', [App\Http\Controllers\Blog\PostController::class, 'tag']);
 
 Route::get('showmodel', [ShowModel3DController::class, 'index']);
 
