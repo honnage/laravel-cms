@@ -5,7 +5,7 @@
     </div> --}}
     <div class="card-default">
         <div class="card-header">
-            User
+            User   {{ Auth::user()->username }}               
         </div>
         <div class="card-body">
             @if($users->count()>0)
@@ -27,11 +27,26 @@
                         <td>{{ $user->lastname }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
-                        {{-- @if(!$user->isAdmin()) --}}
-                        <td>
-                            <button type="button" class="btn btn-primary" >Make Admin</a>
-                        </td>
-                        {{-- @endif --}}
+                        
+                        @if(Auth::user()->username != $user->username)
+                            <td>
+                                @if(!$user->isAdmin())
+                                    <form action="users/changeAdmin/{{$user->id}}" method="post">
+                                        {{csrf_field()}}
+                                        <center><button type="submit" class="btn btn-success">Change Admin</a></center>
+                                    </form>
+                                @else
+                                    <form action="users/changeUser/{{$user->id}}" method="post">
+                                        {{csrf_field()}}
+                                        <center><button type="submit" class="btn btn-primary">Change User</a></center>
+                                    </form>
+                                @endif
+                            </td>
+                        @else
+                            <td>
+                                {{-- สถานะของ username ปัจจุบัน  --}}
+                            </td>
+                        @endif
                     </tr>
                     @endforeach
                     </tbody>

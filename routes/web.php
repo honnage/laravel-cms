@@ -49,6 +49,8 @@ Route::middleware(['auth'])->group(function(){
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('users', [UserController::class, 'index']);
+    Route::post('users/changeAdmin/{user}', [UserController::class, 'ChangeAdmin']);
+    Route::post('users/changeUser/{user}', [UserController::class, 'changeUser']);
 });  
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
