@@ -111,7 +111,7 @@ class PostController extends Controller
         }
 
         if($request->tags){
-            $post->tags()->sync($request->tags);
+            $post->tags()->sync($request->tags); //updata data
         }
 
         Post::find($id)->update($data);
@@ -131,6 +131,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         Post::find($id)->delete();
+        $post->tags()->detach($post->post_id);
         Storage::delete($post->image);
         Session()->flash('success','ลบข้อมูลเรียบร้อยแล้ว');
         return redirect('/posts');
