@@ -8,6 +8,8 @@ use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,7 @@ use App\Http\Controllers\WelcomeController;
 //     return view('welcome');
 // });
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('blog/posts/{post}', [App\Http\Controllers\Blog\PostController::class, 'show']);
 
 Route::get('showmodel', [ShowModel3DController::class, 'index']);
 
